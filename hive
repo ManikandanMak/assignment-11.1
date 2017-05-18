@@ -1,0 +1,19 @@
+ create table if not exists olympics(name string,
+    > age int,                                        
+    > country string,                                 
+    > year int,                                       
+    > cdate string,                                   
+    > game string,                                    
+    > gold int,                                       
+    > silver int,
+    > bronze int,
+    > total int)
+    > row format delimited 
+    > fields terminated by '\t';
+
+load data local inpath '/home/acadgild/Downloads/olympix_data.csv' into table olympics;
+
+select country,COUNT(total) from olympics where game == 'Swimming' group by country;
+
+select year,total from olympics where country == 'India';
+
